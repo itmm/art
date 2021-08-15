@@ -26,5 +26,5 @@ void run(int m, int n) {
 }
 
 int main() {
-	run(1709, 551);
+	run(1769, 551);
 }
