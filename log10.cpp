@@ -27,6 +27,7 @@ void run(double x) {
 }
 
 int main() {
+	run(2);
 	run(10);
 	run(100);
 	run(25);
