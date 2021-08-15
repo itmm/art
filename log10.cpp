@@ -7,13 +7,14 @@ constexpr int ITERATIONS { 30 };
 
 double log10(double x) {
 	assert(x > 0.0);
+	
+	int shifts { 0 };
+	while (x < 1) { --shifts; x *= 10.0; }
+	while (x >= 10) { ++shifts; x *= 0.1; }
+	double result = shifts;
 
-	double result { 0.0 };
-	while (x < 1) { --result; x *= 10.0; }
-	while (x >= 10) { ++result; x *= 0.1; }
-	constexpr double inv_half { 0.5 };
-	double mult { inv_half };
-	for (int i { ITERATIONS }; i; --i, mult *= inv_half) {
+	double mult { 0.5 };
+	for (int i { ITERATIONS }; i; --i, mult *= 0.5) {
 		x *= x;
 		if (x >= 10.0) {
 			x *= 0.1;

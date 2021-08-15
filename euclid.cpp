@@ -20,8 +20,8 @@ int gcd(int m, int n, int &a, int &b) {
 void run(int m, int n) {
 	int a, b;
 	int d = gcd(m, n, a ,b);
-	std::cout << "gcd(" << m << ", " << n << ") = " << a << " * " << m <<
-		" + " << b << " * " << n << " = " << d << "\n";
+	std::cout << "gcd(" << m << ", " << n << ") = " <<
+		a << " * " << m << " + " << b << " * " << n << " = " << d << "\n";
 	assert(a * m + b * n == d);
 }
 
