@@ -3,20 +3,21 @@
 #include <cassert>
 #include <iostream>
 
-constexpr int ITERATIONS { 100 };
+constexpr int ITERATIONS { 30 };
 
 double log10(double x) {
 	assert(x > 0.0);
 
 	double result { 0.0 };
 	while (x < 1) { --result; x *= 10.0; }
-	while (x >= 10) { ++result; x /= 10.0; }
-	double mult { 2.0 };
-	for (int i { ITERATIONS }; i; --i, mult *= 2.0) {
+	while (x >= 10) { ++result; x *= 0.1; }
+	constexpr double inv_half { 0.5 };
+	double mult { inv_half };
+	for (int i { ITERATIONS }; i; --i, mult *= inv_half) {
 		x *= x;
 		if (x >= 10.0) {
-			x /= 10.0;
-			result += 1/mult;
+			x *= 0.1;
+			result += mult;
 		}
 	}
 	return result;
